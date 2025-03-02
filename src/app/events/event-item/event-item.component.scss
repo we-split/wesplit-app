@@ -1,3 +1,4 @@
+/* stylelint-disable max-nesting-depth */
 .event-item {
   display: flex;
   justify-content: space-between;
@@ -16,7 +17,7 @@
       font-weight: normal;
       line-height: 1.1;
       color: var(--dark);
-      margin: 0 0 8px 0;
+      margin: 0 0 8px;
     }
 
     .description-subtitle {

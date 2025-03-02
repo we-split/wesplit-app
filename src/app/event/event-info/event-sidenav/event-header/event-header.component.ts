@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { utc } from 'moment';
 import { Event } from '../../../../../models/Event';
 import { LocalizationService } from '../../../../../shared/localization.service';
@@ -9,12 +9,10 @@ import { LocalizationService } from '../../../../../shared/localization.service'
   styleUrls: ['./event-header.component.scss'],
   standalone: true,
 })
-export class EventHeaderComponent implements OnInit {
+export class EventHeaderComponent {
   @Input() event!: Event;
 
   constructor(private localizationService: LocalizationService) {}
-
-  ngOnInit(): void {}
 
   get eventSubtitle(): string {
     const lang = this.localizationService.getActiveLang();

@@ -48,7 +48,7 @@ export class DataService {
     return collectionData(ref, { idField: 'id' }) as Observable<EventDto[]>;
   }
 
-  getEventById(eventId: string, customUserId: string = ''): Observable<EventDto> {
+  getEventById(eventId: string, customUserId = ''): Observable<EventDto> {
     const userId = customUserId ? customUserId : this.authService.currentUserId;
 
     if (!userId) {

@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-compound-selectors, max-nesting-depth */
 .debt-item {
   display: flex;
   align-items: center;
@@ -7,6 +8,7 @@
     .info {
       color: var(--grey);
     }
+
     .sum {
       display: none;
       color: var(--grey);

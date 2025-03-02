@@ -44,8 +44,9 @@ export class EventInfoComponent implements OnInit {
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   eventId!: string;
-  opened: boolean = false;
+  opened = false;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   event$!: Observable<EventDto> | Observable<any>;
 
   constructor(
@@ -58,6 +59,7 @@ export class EventInfoComponent implements OnInit {
   ) {}
 
   catchHttpError = () =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     catchError((error: any) => {
       const msg = `${error.status} ${error.statusText} -  ${error.url}`;
 
@@ -67,7 +69,7 @@ export class EventInfoComponent implements OnInit {
   async ngOnInit() {
     this.eventId = this.activateRoute.snapshot.params['id'];
     this.event$ = this.dataService.getEventById(this.eventId).pipe(
-      catchError(err => {
+      catchError(() => {
         this.router.navigate(['/', 'events']);
         return of();
       }),
@@ -76,8 +78,8 @@ export class EventInfoComponent implements OnInit {
 
     // TODO: this hack is disgusting
     if (this.activateRoute.snapshot.queryParams['refresh']) {
-      const url: any = new URL(window.location.href.split('?')[0]);
-      window.location = url;
+      const url = new URL(window.location.href.split('?')[0]);
+      window.location = url as unknown as Location;
     }
 
     if (history.state.isCreated) {
@@ -91,15 +93,17 @@ export class EventInfoComponent implements OnInit {
     this.loading$.next(true);
 
     this.event$.subscribe(
-      async (event: EventDto | any) => {
-        this.title.setTitle(`${event.name} - ${environment.name}`);
+      async (event: EventDto | null) => {
+        if (event) {
+          this.title.setTitle(`${event.name} - ${environment.name}`);
+        }
       },
       () => console.error,
       () => this.loading$.next(false)
     );
   }
 
-  getNotification(event: any) {
+  getNotification(event: string) {
     if (event === 'openShareModal') {
       this.openShareModal();
     }

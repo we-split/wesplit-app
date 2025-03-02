@@ -5,12 +5,11 @@ import { ReceiptPurchase } from '../models/Receipt';
 export interface AllValidationErrors {
   control_name: string;
   error_name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error_value: any;
 }
 
-export interface FormGroupControls {
-  [key: string]: AbstractControl;
-}
+export type FormGroupControls = Record<string, AbstractControl>;
 
 export function duplicateMembersValidator(): ValidatorFn {
   return (form: AbstractControl): ValidationErrors | null => {
@@ -86,12 +85,12 @@ export function sumLessOrEqualDebt(debtSum: number): ValidatorFn {
 
 export function calculateFormValidationErrors(
   form: UntypedFormGroup,
-  translation: { [key: string]: string }
+  translation: Record<string, string>
 ): string[] {
   const errors = getFormValidationErrors(form.controls);
 
   return errors.map(error => {
-    let getErrorName = (error: AllValidationErrors) =>
+    const getErrorName = (error: AllValidationErrors) =>
       error.control_name.charAt(0).toUpperCase() + error.control_name.slice(1);
 
     switch (error.error_name) {
@@ -138,7 +137,7 @@ export function getFormValidationErrors(controls: FormGroupControls): AllValidat
 }
 
 export function minLengthArray(min: number, field: string): ValidatorFn {
-  return (c: AbstractControl): { [p: string]: any } | null => {
+  return (c: AbstractControl) => {
     if (c.value[field].length >= min) return null;
     return { minLengthArray: true };
   };

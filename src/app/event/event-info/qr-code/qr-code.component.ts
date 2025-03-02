@@ -50,7 +50,7 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
   userToken!: string;
 
   qrCodeScanner!: Html5QrcodeScanner;
-  isSuccessScan: boolean = false;
+  isSuccessScan = false;
 
   receipt!: Receipt;
   receiptForm!: UntypedFormGroup;
@@ -80,6 +80,7 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
         err => console.error(err)
       );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.authService.currentUser$.pipe(filter(x => x != null)).subscribe((x: any) => {
       this.userToken = x.stsTokenManager.accessToken;
     });
@@ -124,9 +125,9 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
     return `${summaryText}: ${this.receipt.totalSum}`;
   }
 
-  onScanSuccess(decodedText: string, decodedResult: any) {
+  onScanSuccess(decodedText: string) {
     if (this.isSuccessScan) {
-      this.qrCodeScanner.clear().then(() => {});
+      this.qrCodeScanner.clear();
     }
 
     this.loading$.next(true);
@@ -142,7 +143,7 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
     const guestModeQueryParam = this.authService.isGuestMode ? '?questMode=true' : '';
 
     this.httpClient
-      .post<any>(`/api/check${guestModeQueryParam}`, data, {
+      .post<Receipt>(`/api/check${guestModeQueryParam}`, data, {
         headers: {
           Authorization: 'Bearer ' + this.userToken,
         },
@@ -152,7 +153,7 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
           this.receipt = res;
           this.fillFormArray();
         },
-        (err: any) => console.log(err),
+        err => console.log(err),
         () => this.loading$.next(false)
       );
   }

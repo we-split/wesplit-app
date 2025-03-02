@@ -2,9 +2,9 @@ import { EventDto, LocalEvent } from '../models/Event';
 
 export function getLocalEvents(): LocalEvent[] {
   try {
-    return <LocalEvent[]>JSON.parse(localStorage.getItem('localEvents') || '[]');
+    return JSON.parse(localStorage.getItem('localEvents') || '[]') as LocalEvent[];
   } catch (e) {
-    console.error(e); // eslint-disable-line no-console
+    console.error(e);
   }
 
   return [];

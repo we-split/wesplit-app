@@ -56,14 +56,14 @@ export class SettingsFormComponent implements OnInit {
       currency: [selectedCurrency, Validators.required],
     });
 
-    this.settingsForm.valueChanges.subscribe(settings => this.saveSettings(settings));
+    this.settingsForm.valueChanges.subscribe(() => this.saveSettings());
   }
 
   onBack() {
     this.location.back();
   }
 
-  saveSettings(form: any) {
+  saveSettings() {
     const { language, theme, currency } = this.settingsForm.value;
 
     this.currencyService.update(currency);

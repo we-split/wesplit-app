@@ -33,7 +33,7 @@ export class EventCheckComponent {
   @Input() public event!: EventDto;
   @Input() public debts!: MemberDebt[];
 
-  checkOpenState: boolean = false;
+  checkOpenState = false;
 
   constructor(
     private elRef: ElementRef,

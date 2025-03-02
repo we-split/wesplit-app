@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   currentUser$: Observable<any>;
 
   constructor(private auth: Auth) {

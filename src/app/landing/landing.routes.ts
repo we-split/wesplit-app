@@ -5,6 +5,7 @@ import isPwa from '../../utils/PwaExtensions';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const redirectToEventsIfIsPwa = (redirect: any[]) =>
   pipe(
     isNotAnonymous,

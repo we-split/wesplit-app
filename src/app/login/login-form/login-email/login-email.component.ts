@@ -47,7 +47,7 @@ export class LoginEmailComponent implements OnInit {
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loginForm!: UntypedFormGroup;
 
-  isPasswordWrong: boolean = false;
+  isPasswordWrong = false;
   formErrors: string[] = [];
 
   constructor(

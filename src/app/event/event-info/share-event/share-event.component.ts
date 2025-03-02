@@ -12,8 +12,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
 import { MatButton } from '@angular/material/button';
 import { CdkCopyToClipboard } from '@angular/cdk/clipboard';
 
-const navigator = window.navigator as any;
-
 @Component({
   selector: 'share-event',
   templateUrl: './share-event.component.html',
@@ -42,7 +40,7 @@ export class ShareEventComponent {
   }
 
   get copyButtonText() {
-    if (navigator.share) {
+    if ('share' in window.navigator) {
       return this.localizationService.translate('event.share.title');
     }
 
@@ -56,20 +54,19 @@ export class ShareEventComponent {
   openNativeShare() {
     const { title, url } = this.data;
 
-    navigator
+    window.navigator
       .share({
         url,
         title,
         text: `${title} | ${this.localizationService.translate('event.share.text')}`,
       })
-      .then(() => {})
       .catch(console.error);
   }
 
   onCopyClick() {
     this.closeShareModal();
 
-    if (navigator.share) {
+    if ('share' in window.navigator) {
       this.openNativeShare();
     } else {
       this.clipboardService.copyFromText(this.data.url, 'event.share.copied');

@@ -33,10 +33,10 @@ export interface Purchase {
   members: string[];
 }
 
-export type PurchasesSortFilter = {
+export interface PurchasesSortFilter {
   key: 'sum' | 'date';
   order: 'asc' | 'desc';
-};
+}
 
 export interface RePayedDebt {
   id?: string;

@@ -5,7 +5,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
 @Component({
   selector: 'action-type',
   templateUrl: './action-type.component.html',
-  styleUrls: ['./action-type.component.scss'],
   standalone: true,
   imports: [TranslocoDirective],
 })

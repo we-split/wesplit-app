@@ -36,7 +36,7 @@ export class LocalizationService {
     return this.translocoService.getDefaultLang();
   }
 
-  getTranslationSection(key: string): { [key: string]: string } {
+  getTranslationSection(key: string): Record<string, string> {
     let translation = {};
 
     this.translocoService

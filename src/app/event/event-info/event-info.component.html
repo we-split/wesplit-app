@@ -15,7 +15,7 @@
           <h1 class="event-title">
             {{ event.name }}
 
-            @if (!(authService.currentUser$ | async)) {
+            @if ((authService.currentUser$ | async) === null) {
               <span class="event-anonymous">
                 {{ t('event.anonymous') }}
               </span>

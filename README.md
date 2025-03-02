@@ -1,27 +1,73 @@
-# Wesplit
+# WeSplit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+WeSplit is an expense-splitting app that helps groups manage shared purchases and events. It supports creating events, logging purchases (manually or via QR code scanning of fiscal receipts), automatic balance calculation, and debt tracking—all wrapped in a user-friendly, multi-platform experience (PWA-ready).
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Event Management:** Create, view, edit, and delete events.
+- **Purchase Logging:** Add and edit purchases manually or by scanning QR codes from fiscal receipts.
+- **Balance Calculation:** Automatically compute who owes what.
+- **Debt Tracking:** Mark debts as repaid.
+- **Activity Log:** Keep track of all event actions.
+- **Multi-Platform & PWA:** Use on desktops and mobile devices.
+- **Localization & Currency Support:** Multiple languages and currencies.
+- **Theming:** Choose between light, dark, or automatic themes.
 
-## Code scaffolding
+## Project Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **api/** – API integration for receipt scanning.
+- **public/** – Static assets, icons, and localization files.
+- **src/** – Main Angular app including components, models, shared services, and utilities.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Install dependencies:**
 
-## Running unit tests
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Copy and fill environment:**
 
-## Running end-to-end tests
+```bash
+cp .env.sample .env
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Run the app:**
 
-## Further help
+- For a standard development server:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run start
+```
+
+- Or using Vercel's local environment:
+
+```bash
+npm run start:server
+```
+
+**Build the project:**
+
+```bash
+npm run build
+```
+
+**Run tests:**
+
+```bash
+npm run test
+```
+
+## Additional Commands
+
+- **`prepare`** – Sets up Git hooks.
+- **`lint`** – Runs all lint checks (code, formatting, styles, types).
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
+
+## License
+
+This project is released under the MIT License.

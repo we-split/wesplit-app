@@ -40,7 +40,7 @@ import { AsyncPipe } from '@angular/common';
 export class SidenavLayoutComponent {
   @Input() loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  opened: boolean = false;
+  opened = false;
 
   user!: User | null;
 
@@ -63,7 +63,7 @@ export class SidenavLayoutComponent {
   }
 
   openPwaDialog(): void {
-    const dialogRef = this.dialog.open(PwaInstallComponent, {
+    this.dialog.open(PwaInstallComponent, {
       width: '80vw',
       height: '60vh',
     });

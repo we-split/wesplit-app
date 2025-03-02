@@ -6,8 +6,6 @@ import { utc } from 'moment';
   providedIn: 'root',
 })
 export class EventActionCreator {
-  constructor() {}
-
   changeEventName(
     currentUser: string,
     eventName: string,

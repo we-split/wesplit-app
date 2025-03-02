@@ -1,7 +1,8 @@
+/* stylelint-disable max-nesting-depth, selector-class-pattern */
 .event-login {
   &__header {
     background-color: var(--light-grey);
-    padding: 2em 2em 0 2em;
+    padding: 2em 2em 0;
 
     .header {
       &__invite {
@@ -26,6 +27,7 @@
         margin-right: 1em;
         margin-bottom: 1em;
 
+        /* stylelint-disable-next-line selector-max-compound-selectors */
         .add-member-text {
           color: var(--grey);
         }

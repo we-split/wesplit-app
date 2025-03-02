@@ -13,7 +13,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { EventDto, Purchase, PurchaseMember } from '../../../models/Event';
 import { EventActionCreator } from '../../../utils/EventActionCreator';
 import { minMembersCountInPurchase, sumGreaterZero } from '../../../utils/FormValidators';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../base-elements/confirm-dialog/confirm-dialog.component';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { LayoutComponent } from '../../base-elements/layouts/layout/layout.component';
@@ -135,7 +135,7 @@ export class PurchaseFormComponent implements OnInit {
           this.checkAllMembers(true);
         }
       },
-      err => console.error,
+      () => console.error,
       () => this.loading$.next(false)
     );
   }
@@ -186,6 +186,7 @@ export class PurchaseFormComponent implements OnInit {
     this.fillFormArray(this.event.members.map(name => this.formBuilder.group({ name, selected })));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fillFormArray(config: any) {
     this.purchaseForm.setControl('members', this.formBuilder.array(config || []));
   }
@@ -243,9 +244,12 @@ export class PurchaseFormComponent implements OnInit {
   }
 
   async onDeletePurchase() {
-    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      disableClose: false,
-    });
+    let dialogRef: MatDialogRef<ConfirmDialogComponent, unknown> | null = this.dialog.open(
+      ConfirmDialogComponent,
+      {
+        disableClose: false,
+      }
+    );
 
     await dialogRef.afterClosed().subscribe(async result => {
       if (result) {
@@ -262,7 +266,7 @@ export class PurchaseFormComponent implements OnInit {
         await this.onChange();
       }
 
-      dialogRef = null as any;
+      dialogRef = null;
     });
   }
 

@@ -1,3 +1,4 @@
+/* stylelint-disable max-nesting-depth */
 .sidenav-container {
   position: absolute;
   top: 0;
@@ -11,6 +12,7 @@ mat-sidenav {
 }
 
 .sidenav {
+  /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
   ::ng-deep {
     .mat-drawer-inner-container {
       display: flex;

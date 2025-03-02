@@ -34,8 +34,8 @@ button span {
   padding: 12px 24px;
 }
 
-a:before,
-button:before {
+a::before,
+button::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -48,8 +48,8 @@ button:before {
   transform: translate(-50%, -50%);
 }
 
-a:active:before,
-button:active:before {
+a:active::before,
+button:active::before {
   width: 120%;
   padding-top: 120%;
 

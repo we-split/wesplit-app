@@ -1,8 +1,6 @@
 import { getLocalEvents, setOrganizerToLocalEvent } from './EventLocalStorage';
 
-export interface LocalStorage {
-  [key: string]: any;
-}
+export type LocalStorage = Record<string, string>;
 
 let localStore: LocalStorage = {};
 

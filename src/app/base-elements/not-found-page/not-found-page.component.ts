@@ -10,6 +10,4 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [TranslocoDirective, MatButton, RouterLink],
 })
-export class NotFoundPageComponent {
-  constructor() {}
-}
+export class NotFoundPageComponent {}

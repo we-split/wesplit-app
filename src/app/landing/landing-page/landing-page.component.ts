@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
   imports: [TranslocoDirective, MatButton, RouterLink],
 })
 export class LandingPageComponent implements OnInit {
-  isNormalStatus: boolean = true;
+  isNormalStatus = true;
 
   constructor(
     private httpClient: HttpClient,
@@ -41,7 +41,7 @@ export class LandingPageComponent implements OnInit {
           'X-Checkly-Account': accountId,
         },
       })
-      .subscribe((x: any) => {
+      .subscribe((x: { hasErrors?: boolean; hasFailures?: boolean }) => {
         this.isNormalStatus = !(x.hasErrors && x.hasFailures);
       });
   }

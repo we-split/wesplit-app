@@ -8,7 +8,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ActionTypeComponent } from '../action-type/action-type.component';
 import { MatDivider } from '@angular/material/divider';
 
-export const actionIcons: { [key in ActionTypes]: string } = {
+export const actionIcons: Record<ActionTypes, string> = {
   [ActionTypes.CreateEvent]: 'calendar_today',
   [ActionTypes.ChangeEventName]: 'create',
   [ActionTypes.ChangeEventDate]: 'create',

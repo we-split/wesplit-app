@@ -19,3 +19,8 @@ declare let process: {
     [key: string]: string;
   };
 };
+
+declare module 'process' {
+  const process: unknown;
+  export = process;
+}

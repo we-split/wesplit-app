@@ -66,7 +66,7 @@
     "@angular-devkit/core": "18.2.8",
     "@angular-devkit/schematics": "18.2.8",
     "@angular/cli": "18.2.8",
-    "@angular/compiler-cli": "18.2.8",
+    "@angular/compiler-cli": "19.2.0",
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
     "@ngx-env/builder": "18.0.2",

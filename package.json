@@ -69,7 +69,7 @@
     "@angular/compiler-cli": "18.2.8",
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
-    "@ngx-env/builder": "18.0.2",
+    "@ngx-env/builder": "19.0.4",
     "@nx/angular": "20.4.6",
     "@nx/workspace": "20.4.6",
     "@schematics/angular": "18.2.8",

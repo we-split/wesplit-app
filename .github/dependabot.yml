@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: 'monthly'
     ignore:
-      - dependency-name: '@angular/*'
+      - dependency-name: '@angular*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'

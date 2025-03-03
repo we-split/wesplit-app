@@ -89,7 +89,7 @@
     "node-fetch": "3.3.2",
     "nx": "20.4.6",
     "prettier": "3.3.3",
-    "sass": "1.79.5",
+    "sass": "1.85.1",
     "stylelint": "16.15.0",
     "stylelint-config-sass-guidelines": "12.1.0",
     "stylelint-order": "6.0.4",

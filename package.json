@@ -95,6 +95,6 @@
     "stylelint-order": "6.0.4",
     "stylelint-scss": "6.11.1",
     "typescript": "5.5.4",
-    "typescript-eslint": "8.23.0"
+    "typescript-eslint": "8.25.0"
   }
 }

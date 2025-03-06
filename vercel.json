@@ -1,3 +1,3 @@
 {
-  "devCommand": "nx serve --host 0.0.0.0 --disable-host-check --ssl"
+  "devCommand": "ng serve --host 0.0.0.0 --disable-host-check --ssl"
 }

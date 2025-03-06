@@ -1,3 +1,4 @@
+/* stylelint-disable max-nesting-depth */
 .event-action {
   padding: 16px;
   display: flex;
@@ -23,6 +24,7 @@
       color: var(--grey);
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
     &.icon_check {
       mat-icon {
         color: var(--medium-green);

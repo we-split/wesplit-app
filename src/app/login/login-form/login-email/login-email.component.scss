@@ -1,5 +1,7 @@
 .login-spinner {
+  /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
   ::ng-deep {
+    /* stylelint-disable-next-line max-nesting-depth */
     .spinner {
       margin: 2em 0;
       height: auto;

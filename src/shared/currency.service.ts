@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const USER_CURRENCY: string = 'user-currency';
+const USER_CURRENCY = 'user-currency';
 
 @Injectable({
   providedIn: 'root',

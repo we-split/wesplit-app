@@ -51,10 +51,10 @@ export class FeedbackFormComponent implements OnInit {
 
   async onSubmit() {
     if (this.feedbackForm.valid) {
-      const form = <Feedback>this.feedbackForm.value;
+      const form = this.feedbackForm.value as Feedback;
       this.loading$.next(true);
 
-      await this.dataService.addFeedback(form).then(res => {
+      await this.dataService.addFeedback(form).then(() => {
         this.feedbackForm.reset();
         this.loading$.next(false);
         this.location.back();

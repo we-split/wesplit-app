@@ -1,3 +1,5 @@
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable selector-class-pattern */
 .pwa__content {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
       display: block;
       margin-bottom: 1em;
 
+      /* stylelint-disable-next-line selector-max-compound-selectors */
       mat-icon {
         width: auto;
         height: auto;

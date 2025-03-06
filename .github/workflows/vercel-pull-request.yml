@@ -1,0 +1,23 @@
+name: Deploy Vercel preview on PR
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25.2.0
+        id: vercel-deploy-preview
+        continue-on-error: true
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+      - name: Log Outputs
+        if: failure()
+        run: |
+          echo "Preview URL: ${{ steps.vercel-deploy-preview.outputs.preview-url }}"

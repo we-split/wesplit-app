@@ -26,7 +26,8 @@ import { MatDivider } from '@angular/material/divider';
 })
 export class EventSidenavComponent {
   @Input() event!: EventDto;
-  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Output() notifyParent = new EventEmitter<any>();
 
   constructor(
     private dataService: DataService,

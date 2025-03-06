@@ -44,8 +44,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     combineLatest([routes$, data$, url$])
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(([route, data, url]) => {
-        this.localizationService.load().subscribe(x => {
+      .subscribe(([, data]) => {
+        this.localizationService.load().subscribe(() => {
           if (data['scope']) {
             const title = this.localizationService.translate(`${data['scope']}.title`);
 

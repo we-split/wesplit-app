@@ -20,7 +20,7 @@ import {
 import { utc } from 'moment';
 import { BehaviorSubject } from 'rxjs';
 import { ConfirmDialogComponent } from '../../base-elements/confirm-dialog/confirm-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationService } from '../../../shared/authentication.service';
 import { Location } from '@angular/common';
 import { TranslocoDirective } from '@ngneat/transloco';
@@ -72,7 +72,7 @@ export class EventFormComponent implements OnInit {
   eventId!: string;
   event!: EventDto;
   eventForm!: UntypedFormGroup;
-  hasRePayedDebts: boolean = false;
+  hasRePayedDebts = false;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -151,6 +151,7 @@ export class EventFormComponent implements OnInit {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fillFormArray(config: any) {
     this.eventForm.setControl('members', this.formBuilder.array(config || []));
   }
@@ -188,7 +189,7 @@ export class EventFormComponent implements OnInit {
     if (this.eventForm.valid) {
       this.loading$.next(true);
 
-      let { name, date, organizer, members } = this.eventForm.value;
+      const { name, date, organizer, members } = this.eventForm.value;
 
       const event: Event = {
         ownerUserId: this.authService.currentUserId,
@@ -198,7 +199,7 @@ export class EventFormComponent implements OnInit {
         date: utc(date).valueOf(),
         members: [
           organizer,
-          ...this.members?.value
+          ...this.members.value
             .filter((n: EventMember) => n.name !== '')
             .map((x: EventMember) => x.name),
         ],
@@ -207,12 +208,13 @@ export class EventFormComponent implements OnInit {
       if (this.isEdit && this.eventId) {
         event.id = this.eventId;
 
-        await this.dataService.updateEvent(event).then(async (res: any) => {
+        await this.dataService.updateEvent(event).then(async () => {
           await this.onChange(this.eventId, event.organizer);
         });
       } else {
         await this.dataService
           .addEvent(event)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .then(async (res: any) => {
             const id = res._key.path.segments[res._key.path.segments.length - 1];
 
@@ -238,16 +240,19 @@ export class EventFormComponent implements OnInit {
     }
   }
 
-  async onChange(id: string, organizer: string, isCreated: boolean = false) {
+  async onChange(id: string, organizer: string, isCreated = false) {
     setOrganizerToLocalEvent(id, organizer);
 
     await this.router.navigate(['/', 'events', id], { state: { isCreated } });
   }
 
   async onDeleteEvent() {
-    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      disableClose: false,
-    });
+    let dialogRef: MatDialogRef<ConfirmDialogComponent, unknown> | null = this.dialog.open(
+      ConfirmDialogComponent,
+      {
+        disableClose: false,
+      }
+    );
 
     await dialogRef.afterClosed().subscribe(async result => {
       if (result) {
@@ -255,7 +260,7 @@ export class EventFormComponent implements OnInit {
 
         await this.dataService
           .deleteEvent(this.eventId)
-          .then(async res => {
+          .then(async () => {
             setLocalEvents([]);
             await this.router.navigate(['/events']);
           })
@@ -263,7 +268,7 @@ export class EventFormComponent implements OnInit {
           .finally(() => this.loading$.next(true));
       }
 
-      dialogRef = null as any;
+      dialogRef = null;
     });
   }
 }

@@ -98,7 +98,7 @@ export class RepayDebtComponent implements OnInit {
           name: this.getName(debt.to),
         }),
       ])
-        .then(res => {
+        .then(() => {
           this.dialogRef.close();
           location.reload();
         })

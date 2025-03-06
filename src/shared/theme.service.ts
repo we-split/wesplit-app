@@ -1,9 +1,9 @@
 import { ApplicationRef, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
-const DARK_MODE: string = 'dark-mode';
-const LIGHT_MODE: string = 'light-mode';
-const AUTO_MODE: string = 'auto-mode';
-const USER_THEME: string = 'user-theme';
+const DARK_MODE = 'dark-mode';
+const LIGHT_MODE = 'light-mode';
+const AUTO_MODE = 'auto-mode';
+const USER_THEME = 'user-theme';
 
 @Injectable({
   providedIn: 'root',

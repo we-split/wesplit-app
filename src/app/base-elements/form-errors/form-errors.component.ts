@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LocalizationService } from '../../../shared/localization.service';
 import { UntypedFormGroup } from '@angular/forms';
 
@@ -8,15 +8,13 @@ import { UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./form-errors.component.scss'],
   standalone: true,
 })
-export class FormErrorsComponent implements OnInit {
+export class FormErrorsComponent {
   @Input() localization!: string;
   @Input() form!: UntypedFormGroup;
   @Input() errors!: string[];
-  @Input() force: boolean = false;
+  @Input() force = false;
 
   constructor(private localizationService: LocalizationService) {}
-
-  ngOnInit(): void {}
 
   errorText(key: string): string {
     return this.localizationService.translate(`${this.localization}.${key}`) ?? '';

@@ -2,8 +2,6 @@ import { ElementRef, Injectable } from '@angular/core';
 import { LocalizationService } from './localization.service';
 import { NotificationService } from './notification.service';
 
-const navigator = window.navigator as any;
-
 @Injectable({
   providedIn: 'root',
 })
@@ -15,15 +13,15 @@ export class ClipboardService {
 
   public copyFromText(
     text: string,
-    successLocalizationKey: string = 'clipboard.success',
-    failedLocalizationText: string = 'clipboard.failed'
+    successLocalizationKey = 'clipboard.success',
+    failedLocalizationText = 'clipboard.failed'
   ) {
-    navigator.clipboard
+    window.navigator.clipboard
       .writeText(text)
       .then(() => {
         this.notificationService.open(this.localizationService.translate(successLocalizationKey));
       })
-      .catch((err: any) => {
+      .catch(() => {
         this.notificationService.open(this.localizationService.translate(failedLocalizationText));
       });
   }
@@ -31,8 +29,8 @@ export class ClipboardService {
   public copyFromElement(
     elRef: ElementRef,
     selector: string,
-    successLocalizationKey: string = 'clipboard.success',
-    failedLocalizationText: string = 'clipboard.failed'
+    successLocalizationKey = 'clipboard.success',
+    failedLocalizationText = 'clipboard.failed'
   ) {
     const htmlContent = elRef.nativeElement.querySelector(selector);
 

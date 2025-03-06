@@ -11,6 +11,7 @@
   }
 
   &__icon {
+    /* stylelint-disable-next-line max-nesting-depth */
     mat-icon {
       font-size: 10rem;
       color: var(--medium-grey);

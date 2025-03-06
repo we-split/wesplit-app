@@ -1,4 +1,4 @@
-declare var process: {
+declare let process: {
   env: {
     NG_APP_FIREBASE_PROJECT_ID: string;
     NG_APP_FIREBASE_PRIVATE_KEY_ID: string;
@@ -16,6 +16,11 @@ declare var process: {
     NG_APP_CHECKLYHQ_ACCOUNT: string;
     NG_APP_OFD_AGGREGATOR_URL: string;
     NG_APP_OFD_AGGREGATOR_HOST: string;
-    [key: string]: any;
+    [key: string]: string;
   };
 };
+
+declare module 'process' {
+  const process: unknown;
+  export = process;
+}

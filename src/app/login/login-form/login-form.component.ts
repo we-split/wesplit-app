@@ -32,7 +32,7 @@ export class LoginFormComponent {
     private location: Location
   ) {}
 
-  async loginWithService(service: string = '') {
+  async loginWithService(service = '') {
     this.loading$.next(true);
 
     if (isPwa()) {
@@ -66,7 +66,7 @@ export class LoginFormComponent {
   }
 
   openLoginModal() {
-    const dialogRef = this.dialog.open(LoginEmailComponent, {
+    this.dialog.open(LoginEmailComponent, {
       width: '350px',
     });
   }

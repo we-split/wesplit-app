@@ -26,6 +26,8 @@ import { MatIcon } from '@angular/material/icon';
 import { FormErrorsComponent } from '../../../base-elements/form-errors/form-errors.component';
 import { MatCheckbox } from '@angular/material/checkbox';
 
+import type { Html5QrcodeScannerConfig } from 'html5-qrcode/esm/html5-qrcode-scanner';
+
 @Component({
   selector: 'app-qr-code',
   templateUrl: './qr-code.component.html',
@@ -96,12 +98,14 @@ export class QrCodeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const config = {
+    const config: Html5QrcodeScannerConfig = {
       fps: 10,
       qrbox: {
         width: 120,
         height: 120,
       },
+      rememberLastUsedCamera: true,
+      supportedScanTypes: [0],
     };
 
     this.qrCodeScanner = new Html5QrcodeScanner('qr-reader', config, false);

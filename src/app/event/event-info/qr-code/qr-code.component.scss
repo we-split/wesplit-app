@@ -57,54 +57,57 @@
   }
 
   #qr-reader {
-    font-size: 1em !important;
-    /* stylelint-disable-next-line declaration-property-value-disallowed-list */
-    border: none !important;
-    height: auto;
-    width: auto;
-    margin: 0 auto;
-    max-width: 600px;
+    border: 1px solid transparent !important;
 
-    #qr-reader__scan_region {
-      min-height: auto !important;
-
-      br {
-        display: none;
-      }
-    }
-
-    #qr-reader__dashboard_section {
-      display: flex;
-      justify-content: center;
-
-      div {
-        margin: 0;
-        line-height: 1;
-      }
-    }
-
-    #qr-reader__dashboard_section_csr {
-      display: flex;
-      justify-content: center;
-
-      span:first-child {
-        color: transparent;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1em;
-      }
-    }
-
-    #qr-reader__dashboard_section_fsr,
-    #qr-reader__header_message,
-    #qr-reader__dashboard_section_swaplink {
-      display: none !important;
-    }
-
-    img {
+    > div:first-of-type {
       display: none;
     }
 
-    @import 'button';
+    .html5-qrcode-element {
+      position: relative;
+      margin-top: 10px;
+      padding: 10px;
+      overflow: hidden;
+      border-width: 0;
+      outline: none;
+      border-radius: 2px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+      background-color: var(--light-grey);
+      line-height: 1;
+    }
+
+    #qr-reader__dashboard_section_csr {
+      span {
+        font-size: 0;
+      }
+    }
+
+    #html5-qrcode-button-camera-permission,
+    #html5-qrcode-button-camera-stop,
+    #html5-qrcode-button-camera-start {
+      color: transparent;
+      position: relative;
+    }
+
+    @mixin replace-text($text) {
+      content: $text;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--dark);
+    }
+
+    #html5-qrcode-button-camera-permission::after {
+      @include replace-text('Использовать камеру');
+    }
+
+    #html5-qrcode-button-camera-start::after {
+      @include replace-text('Сканировать');
+    }
+
+    #html5-qrcode-button-camera-stop::after {
+      @include replace-text('Стоп');
+    }
   }
 }
